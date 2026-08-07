@@ -64,8 +64,8 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('ᴀɴɪᴍᴇꜱ', url='https://t.me/UNRATED_CODER', style="primary"),
              InlineKeyboardButton('ʙᴀꜱᴇ', url='https://t.me/UNRATED_CODER', style="primary")],
-            [InlineKeyboardButton('• ᴀʙᴏᴜᴛ', callback_data='about', style="success"),
-             InlineKeyboardButton(' ʜᴇʟᴘ •', callback_data='help', style="success")],
+            [InlineKeyboardButton('• ᴀʙᴏᴜᴛ', callback_data='about', style="primary"),
+             InlineKeyboardButton(' ʜᴇʟᴘ •', callback_data='help', style="primary")],
             [InlineKeyboardButton("ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ", url='https://t.me/UNRATED_CODER', style="success")]
         ])
 
