@@ -77,7 +77,7 @@ graph TD
 
 *   `/start` — Initialize the bot interface and check system availability.
 *   `/help` — Display detailed commands list and usage tutorial.
-*   `/about` — Read technical logs, framework details, and developer credits.
+*   `/ping` — View Bot Database Connection Speed.
 
 </details>
 
@@ -90,6 +90,8 @@ graph TD
 *   `/stats` — Monitor server metrics like CPU/RAM usages and user volume.
 *   `/users` — Get precise counts of active registered users in the database.
 *   `/broadcast` — Broadcast a targeted global text message to all users.
+*   `/retrieve_on ` — Toggle on Auto-Delete Msg Alert.
+*   `/retrieve_off` — Toggle off Auto-Delete Msg Alert
 *   `/pbroadcast` — Broadcast photos with customized HTML captions.
 *   `/dbroadcast` — Broadcast direct videos, audios, or generic files.
 
