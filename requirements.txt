@@ -16,3 +16,4 @@ aiofiles
 asyncio
 git+https://github.com/hydrogram/hydrogram.git
 aiosqlite
+psutil

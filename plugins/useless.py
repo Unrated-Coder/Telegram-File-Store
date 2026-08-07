@@ -40,6 +40,7 @@ from plugins.Unrated_Coder import check_owner_only, check_admin_or_owner
 async def stats(bot: Bot, message: Message):
     if not await check_admin_or_owner(message):
         return
+
     uptime = getattr(bot, "uptime", None)
     if not uptime:
         bot.uptime = datetime.now()
@@ -49,7 +50,20 @@ async def stats(bot: Bot, message: Message):
     uptime_str = get_readable_time(int(delta.total_seconds()))
     if not uptime_str:
         uptime_str = "0s"
-    await message.reply(BOT_STATS_TEXT.format(uptime=uptime_str))
+
+    import psutil
+    cpu = psutil.cpu_percent()
+    ram = psutil.virtual_memory().percent
+
+    users = await db.full_userbase()
+    users_count = len(users)
+
+    await message.reply(BOT_STATS_TEXT.format(
+        uptime=uptime_str,
+        cpu=cpu,
+        ram=ram,
+        users=users_count
+    ))
 
 
 

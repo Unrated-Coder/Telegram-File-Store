@@ -63,7 +63,7 @@ CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<b>• ʙʏ @UNRATED_CODER</b
 CUSTOM_DELETE_ALERT = os.environ.get("CUSTOM_DELETE_ALERT", "<b>ʏᴏᴜʀ ꜰɪʟᴇ ɪꜱ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ, ʜᴇʜᴇ! ᴄʟɪᴄᴋ ʙᴇʟᴏᴡ ᴛᴏ ʙᴇɢ ᴍᴇ ꜰᴏʀ ɪᴛ ᴀɢᴀɪɴ 👇</b>")
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False 
 DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True'
-BOT_STATS_TEXT = "<b>ᴍʏ ᴜᴘᴛɪᴍᴇ ʜᴇʜᴇ~</b>\n{uptime}"
+BOT_STATS_TEXT = "<b>📊 ʙᴏᴛ sᴛᴀᴛɪsᴛɪᴄs:</b>\n\n<b>• ᴜᴘᴛɪᴍᴇ:</b> <code>{uptime}</code>\n<b>• ᴄᴘᴜ ᴜsᴀɢᴇ:</b> <code>{cpu}%</code>\n<b>• ʀᴀᴍ ᴜsᴀɢᴇ:</b> <code>{ram}%</code>\n<b>• ᴛᴏᴛᴀʟ ᴜsᴇʀs:</b> <code>{users}</code>"
 USER_REPLY_TEXT = "<b>ᴡʜᴏ ᴛᴏʟᴅ ʏᴏᴜ ᴛᴏ ᴄᴀʟʟ ᴍᴇ? ʙᴀᴋᴀ! ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴍʏ ꜱᴇɴᴘᴀɪ!! 🙄</b>"
 USER_ROAST_TEXT = "<b>ᴡʜᴏ ᴀʀᴇ ʏᴏᴜ ᴛᴏ ʙᴀɴ ᴀɴʏᴏɴᴇ, ʏᴏᴜ ᴄʟᴜᴍꜱʏ ᴍᴏʀᴛᴀʟ? ᴋɴᴏᴡ ʏᴏᴜʀ ᴘʟᴀᴄᴇ ꜰɪʀꜱᴛ! 💅</b>"
 
