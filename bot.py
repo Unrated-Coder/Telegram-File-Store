@@ -20,6 +20,28 @@
 
 import asyncio
 import pyromod.listen
+import inspect
+from pyrogram.handlers import MessageHandler
+
+# Monkeypatch pyromod's MessageHandler.check to safely handle both synchronous and asynchronous custom/standard filters.
+async def safe_check(self, client, update):
+    listener = client.listening.get(update.chat.id)
+    if listener and not listener['future'].done():
+        if callable(listener['filters']):
+            res = listener['filters'](client, update)
+            if inspect.isawaitable(res):
+                return await res
+            return res
+        return True
+    if callable(self.filters):
+        res = self.filters(client, update)
+        if inspect.isawaitable(res):
+            return await res
+        return res
+    return True
+
+MessageHandler.check = safe_check
+
 from pyrogram import Client
 from pyrogram.enums import ParseMode
 import sys
@@ -80,6 +102,7 @@ class Bot(Client):
                 BotCommand("help", "sʜᴏᴡs ᴛʜᴇ sᴜᴘᴘᴏʀᴛ/ʜᴇʟᴘ ᴍᴇssᴀɢᴇ"),
                 BotCommand("commands", "ʟɪsᴛs ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅs"),
                 BotCommand("stats", "sʜᴏᴡs ʙᴏᴛ sᴛᴀᴛɪsᴛɪᴄs"),
+                BotCommand("ping", "ᴄʜᴇᴄᴋs ᴛʜᴇ ʙᴏᴛ's ᴘɪɴɢ ʟᴀᴛᴇɴᴄʏ"),
                 BotCommand("users", "sʜᴏᴡs ᴛʜᴇ ᴛᴏᴛᴀʟ ᴜsᴇʀ ᴄᴏᴜɴᴛ"),
                 BotCommand("add_admin", "ᴀᴅᴅs ᴀ ɴᴇᴡ ᴀᴅᴍɪɴ ᴜsᴇʀ"),
                 BotCommand("admins", "ʟɪsᴛs ᴀʟʟ ᴀᴄᴛɪᴠᴇ ᴀᴅᴍɪɴ ɪᴅs"),
