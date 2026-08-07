@@ -121,6 +121,15 @@ async def retrieve_off_command(client: Bot, message: Message):
     await db.set_retrieve_status(False)
     await message.reply("<b><blockquote>Rᴇᴛʀɪᴇᴠᴇ Oғғ! Dᴇʟᴇᴛɪᴏɴ ᴀʟᴇʀᴛ ᴍᴇssᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ᴇɴᴛɪʀᴇʟʏ ᴀғᴛᴇʀ ғɪʟᴇs ᴀʀᴇ ᴠᴀɴɪsʜᴇᴅ. ❌</blockquote></b>")
 
+
+@Bot.on_message(filters.command('ping'))
+async def ping(bot: Bot, message: Message):
+    start_time = time.time()
+    reply = await message.reply("<b>Pɪɴɢɪɴɢ...</b>")
+    end_time = time.time()
+    latency = (end_time - start_time) * 1000
+    await reply.edit(f"<b>Pᴏɴɢ! 🏓 <blockquote>{latency:.2f}ms</blockquote></b>")
+
 # =====================================================================================##
 #                         ✨ MADE BY UNRATED CODER ✨
 #                  Join Updates Channel: https://t.me/UNRATED_CODER
