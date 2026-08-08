@@ -44,6 +44,26 @@ MessageHandler.check = safe_check
 
 from pyrogram import Client
 from pyrogram.enums import ParseMode
+import functools
+
+# Monkeypatch pyromod's Client.listen to use the currently running event loop,
+# preventing "ValueError: The future belongs to a different loop than the one specified as the loop argument".
+async def patched_listen(self, chat_id, filters=None, timeout=None):
+    if type(chat_id) != int:
+        chat = await self.get_chat(chat_id)
+        chat_id = chat.id
+
+    loop = asyncio.get_running_loop()
+    future = loop.create_future()
+    future.add_done_callback(
+        functools.partial(self.clear_listener, chat_id)
+    )
+    self.listening.update({
+        chat_id: {"future": future, "filters": filters}
+    })
+    return await asyncio.wait_for(future, timeout)
+
+Client.listen = patched_listen
 import sys
 from datetime import datetime
 from config import *
