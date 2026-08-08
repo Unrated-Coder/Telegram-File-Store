@@ -126,8 +126,8 @@ async def get_message_id(client, message):
     elif message.forward_sender_name:
         return 0
     elif message.text:
-        pattern = r"https://t.me/(?:c/)?(.*)/(\d+)"
-        matches = re.match(pattern,message.text)
+        pattern = r"https://(?:t\.me|telegram\.me|telegram\.dog)/(?:c/)?([^/?\s]+)/(\d+)"
+        matches = re.search(pattern, message.text)
         if not matches:
             return 0
         channel_id = matches.group(1)
@@ -136,7 +136,7 @@ async def get_message_id(client, message):
             if f"-100{channel_id}" == str(client.db_channel.id):
                 return msg_id
         else:
-            if channel_id == client.db_channel.username:
+            if channel_id == getattr(client.db_channel, "username", None):
                 return msg_id
     else:
         return 0
