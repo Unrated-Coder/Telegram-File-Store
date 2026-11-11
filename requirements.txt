@@ -1,4 +1,4 @@
-pyrofork==2.3.45 
+pyrofork==2.3.45
 TgCrypto
 pyromod==1.5
 schedule
@@ -13,7 +13,6 @@ pytz
 requests
 bs4
 aiofiles
-asyncio
 git+https://github.com/hydrogram/hydrogram.git
 aiosqlite
 psutil
